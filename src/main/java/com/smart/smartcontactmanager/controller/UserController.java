@@ -49,7 +49,8 @@ public class UserController {
 
     // deshboard home
     @GetMapping("/index")
-    public String normalDeshboard(Model model, Principal principal) {
+    public String normalDeshboard(Model m, Principal principal) {
+        m.addAttribute("title", "Home-Smart Contact Manager");
         return "normal/user_deshboard";
     }
 
@@ -111,12 +112,14 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String profilePage() {
+    public String profilePage(Model m) {
+        m.addAttribute("title", "Your Profile");
         return "normal/profile";
     }
 
     @GetMapping("/setting")
-    public String settingPage() {
+    public String settingPage(Model m) {
+        m.addAttribute("title", "Password Change");
         return "normal/setting";
     }
 
