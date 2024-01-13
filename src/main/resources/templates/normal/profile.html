@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+</head>
+<body>
+    <div th:replace="~{normal/base :: content}"></div>
+    <section class="content mt-5">
+        <i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+
+        <div class="card cmargin">
+            <div class="card-body pcolor text-center">
+                <h1 class="text-center ">Your Profile</h1>
+                <table class="table table-dark table-responsive table-sm text-center">
+                    <thead>
+                        <tr>
+                            <th class="table-danger" scope="col">Your Id</th>
+                            <td><span th:text="${user.id}"></span></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="table-warning" scope="col">Name</th>
+                            <td><span th:text="${user.name}"></span></td>
+                        </tr>
+                        <tr>
+                            <th class="table-primary cct" scope="col">Email</th>
+                            <td><span th:text="${user.email}"></span></td>
+                        </tr>
+                        <tr>
+                            <th class="table-primary cct" scope="col">Account</th>
+                            <td><span>Active</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="description">
+                    <h3 class="text-center">About</h3>
+                    <span th:text="${user.about}"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

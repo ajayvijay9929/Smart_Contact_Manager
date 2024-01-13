@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+</head>
+<body>
+    <div th:replace="~{normal/base :: content}"></div>
+    <section class="content mt-5">
+        <i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+        
+        <!-- error  message-->
+        <div class="mainDiv">
+            <div class="cardStyle">
+                <form action="" th:action="@{/user/change-password}" method="post" name="chagePasswordForm" id="chagePasswordForm" onsubmit="return validateSignupForm()">
+                    
+                    <img th:src="@{../image/pass.png}" id="signupLogo"/>
+                    <div th:if="${session.message}" class="container" id="errorSection">
+                        <div class="alert alert-success text-center m-0">
+                          <span th:text="${session.message.content}"></span>
+                          <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+                        </div>
+                      </div>
+                
+                <h2 class="formTitle ">
+                  Change account password
+                </h2>
+                
+              <div class="inputDiv">
+                <label class="inputLabel" for="password">New Password</label>
+                <input type="password" id="password" name="password" required>
+              </div>
+                
+              <div class="inputDiv">
+                <label class="inputLabel" for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword">
+              </div>
+              
+              <div class="buttonWrapper">
+                <button type="submit" id="submitButton" class="submitButton pure-button pure-button-primary">
+                  <span>Continue</span>
+                </button>
+              </div>
+                
+            </form>
+            </div>
+          </div>
+
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!-- Add this code to your HTML file -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+</head>
+
+<body>
+
+    <div th:replace="~{normal/base :: content}"></div>
+    <section class="content mt-5">
+        <i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+
+        <div class="box container text-center mt-5 p-5">
+            <div class="box-body">
+                <h1>Logout Confirmation</h1>
+                <p>Are you sure you want to log out?</p>
+                <button onclick="confirmLogout()" class="btn btn-danger">Yes, Log Out</button>
+                <button onclick="cancelLogout()" class="btn btn-light">Cancel</button>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+
+</html>

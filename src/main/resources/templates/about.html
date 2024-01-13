@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+</head>
+<body>
+    <div th:replace="~{base :: content}"></div>
+    <section class="container mt-5 ">
+        <div style="background-color: beige;" class="card ">
+            <h1 style="background-color: aqua;" class="text-center p-3">This application is designed to help you efficiently manage your contacts.</h1>
+            <card class="card-body mt-3">
+                <ul>1. Add contacts to keep track of important people in your life.</ul>
+                <ul>2. Edit contact details to keep information up-to-date.</ul>
+                <ul>3. Delete contacts you no longer need.</ul>
+                <ul>4. View your contact list easily.</ul>
+            </card>
+        </div>
+        <h3 style="text-decoration:underline;" class="text-center mt-3 ">Explore the app and enjoy the convenience of staying connected!</h3>
+
+
+    </section>
+</body>
+</html>
