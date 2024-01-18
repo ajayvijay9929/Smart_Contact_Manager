@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+</head>
+
+<body>
+
+    <div th:replace="~{normal/base :: content}"></div>
+    <section>
+        <div class="mb-3 d-flex justify-content-between">
+            <label for="otp_field" class="form-label">Enter OTP</label>
+            <div>
+              <input name="otp" type="number" class="form-control" id="otp_field" aria-describedby="emailHelp" placeholder="Enter OTP" required>
+              <button id="generateOtpButton" onclick="generateOtp(event)">Generate OTP</button>
+            </div>
+          </div>
+          
+    </section>
+</body>
+</html>

@@ -10,16 +10,19 @@
 <body>
 
     <div th:replace="~{base :: content}"></div>
-    <section >
+    <section>
         <div class="container mt-2">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <div style="background-color:bisque;" class="my-card">
 
 
-                        <div id="errorSection" th:if="${session.msgp == true}" th:class="${session.message.type}" role="alert">
-                            <p class="text-center" th:text="${session.message.content}"></p>
-                            <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+                        <!-- error section  -->
+                        <div th:if="${session.message}" class="container" id="errorSection">
+                            <div th:class="${session.message.type}">
+                                <span th:text="${session.message.content}"></span>
+                                <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+                            </div>
                         </div>
 
                         <div class="container text-center">
@@ -28,19 +31,18 @@
 
                         <h1 class="text-center">Signup Here</h1>
 
-                        <form id="myForm" action="" th:action="@{/do_signup}" method="post" th:object="${user}">
+                        <form id="myForm" action="" th:action="@{/do_signup}" method="post" th:object="${user}"
+                            onsubmit="return validateSignupForm()">
 
                             <div class="mb-3">
                                 <label for="name_field" class="form-label">Your Name</label>
-                                <input name="name" type="text"
-                                 class="form-control" 
-                                 th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''}"
-                                 id="name_field"
+                                <input name="name" type="text" class="form-control"
+                                    th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''}" id="name_field"
                                     aria-describedby="emailHelp" placeholder="Enter Here" required
                                     th:value="${user.name}">
-                                
-                                    <div class="invalid-feedback" th:each="e : ${#fields.errors('name')}" th:text="${e}">
-                                      </div>
+
+                                <div class="invalid-feedback" th:each="e : ${#fields.errors('name')}" th:text="${e}">
+                                </div>
                             </div>
 
                             <div class="mb-3">
@@ -50,10 +52,19 @@
                                     th:value="${user.email}">
                             </div>
 
+                            <div class="mb-3 d-flex justify-content-between">
+                                <div>
+                                    <input name="otp" type="number" class="form-control" id="otp_field"
+                                        aria-describedby="emailHelp" placeholder="Enter OTP" required>
+                                </div>
+                                <button class="btn btn-primary" id="generateOtpButton" onclick="generateOtp(event)">Generate OTP</button>
+                            </div>
+
+
                             <div class="mb-1">
                                 <label for="password" class="form-label">Your Password</label>
                                 <input name="password" type="password" class="form-control" id="password_field"
-                                    aria-describedby="emailHelp" placeholder="" required>
+                                    aria-describedby="emailHelp" placeholder="" required minlength="5" maxlength="15">
                             </div>
 
                             <div class="form-group">
@@ -78,7 +89,7 @@
         </div>
     </section>
 
-    <!-- <script>
+    <script>
         window.onload = function () {
             if (performance.navigation.type === 1) {
                 var errorSection = document.getElementById('errorSection');
@@ -88,7 +99,7 @@
                 }
             }
         };
-    </script> -->
+    </script>
 </body>
 
 </html>

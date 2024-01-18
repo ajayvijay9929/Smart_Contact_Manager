@@ -14,7 +14,7 @@ const toggleSidebar = () => {
 }
 
 
-function deleteContact(cid,currentPage) {
+function deleteContact(cid, currentPage) {
     Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -25,7 +25,7 @@ function deleteContact(cid,currentPage) {
         confirmButtonText: "Yes, delete it!"
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location="/user/"+cid+"/delete/"+currentPage;
+            window.location = "/user/" + cid + "/delete/" + currentPage;
         }
     });
 }
@@ -63,4 +63,40 @@ function confirmLogout() {
 
 function cancelLogout() {
     window.location.href = '/user/index'; // Redirect to some other page or dashboard
+}
+
+// for otp
+function generateOtp(event) {
+    // Prevent the default form submission
+    event.preventDefault();
+    var email = document.getElementById("email_field").value;
+    var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    
+    if (!email) {
+        alert("Please enter email before generating OTP.");
+        return;
+    }
+
+    if (!emailRegex.test(email)) {
+        alert("Please enter valid email");
+        return;
+    }
+    // Make an AJAX request to the server-side /opt endpoint
+    $.ajax({
+        type: "GET",
+        url: "/otp",
+        data: { email: email }, // Pass the email as a parameter
+        success: function (otpGenerated) {
+            if (otpGenerated) {
+                alert("OTP Successfully Generated");
+            } else {
+                alert("Something went wrong check email address and try again!!");
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error("AJAX request failed:", status, error);
+            alert("Error generating OTP");
+        }
+    });
 }

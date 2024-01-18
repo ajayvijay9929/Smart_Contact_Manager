@@ -250,3 +250,22 @@ button[disabled] {
         transform: rotate(360deg);
     }
 }
+
+#generateOtpButton {
+    border-radius: 10px;
+    --bs-btn-padding-x: 0.25rem;
+  }
+  
+
+  .d-flex {
+    display: flex;
+  }
+  
+  .justify-content-between {
+    justify-content: space-between;
+  }
+  
+  #generateOtpButton {
+    margin-top: 5px; /* Adjust vertical offset as needed */
+  }
+  
