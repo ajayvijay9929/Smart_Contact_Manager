@@ -5,7 +5,8 @@ About Page
 ![image](https://github.com/ajayvijay9929/Smart_Contact_Manager/assets/120326151/da6e0157-d692-4c49-938a-a4b4476d2d93)
 
 Signup Page
-![image](https://github.com/ajayvijay9929/Smart_Contact_Manager/assets/120326151/e698dd47-1237-4a9a-a161-fbfca20d2651)
+![image](https://github.com/ajayvijay9929/Smart_Contact_Manager/assets/120326151/84d182e5-c966-41b8-b3f5-a677f99f4264)
+
 
 Login Page
 ![image](https://github.com/ajayvijay9929/Smart_Contact_Manager/assets/120326151/9f13efa0-6376-4217-9919-02815ba9764f)
