@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+</head>
+
+<body>
+    <div th:replace="~{base :: content}"></div>
+    <section>
+        <section class="vh-80">
+            <div class="container py-5 mt-4 h-100 cwidth">
+                <div class="row d-flex align-items-center justify-content-center h-100">
+                    <div class="col-md-8 col-lg-7 col-xl-6">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                            class="img-fluid" alt="Phone image">
+                    </div>
+                    <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1" >
+                         <!-- error section  -->
+                         <div th:if="${session.message}" class="container" id="errorSection">
+                            <div th:class="${session.message.type}">
+                                <span th:text="${session.message.content}"></span>
+                                <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+                            </div>
+                        </div>
+
+                        <form id="checkotp" style=" text-align: -webkit-center;" th:action="@{/otpsubmit}" method="post" onsubmit="return validateOTP()">
+                            
+                            <div class="form-outline mb-4" style="width: 50%;">
+                                <label class="form-label mt-4" for="form1Example13">One time password(OTP)</label>
+                                <input type="number" id="otp" name="otp" class="form-control form-control-lg" placeholder="Enter otp here"
+                                    required />
+                            </div>
+                                <button type="submit" id="submitButton" style="width: 30%;" class="submitButton pure-button pure-button-primary">
+                                  <span>Submit</span>
+                                </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <script>
+        $('.nav-link').removeClass('active')
+        $('#login-link').addClass('active')
+    </script>
+</body>
+
+</html>

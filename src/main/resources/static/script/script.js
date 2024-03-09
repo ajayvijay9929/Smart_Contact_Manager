@@ -72,7 +72,7 @@ function generateOtp(event) {
     var email = document.getElementById("email_field").value;
     var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    
+
     if (!email) {
         alert("Please enter email before generating OTP.");
         return;
@@ -84,7 +84,7 @@ function generateOtp(event) {
     }
     // Make an AJAX request to the server-side /opt endpoint
     $.ajax({
-        type: "GET",
+        type: "Get",
         url: "/otp",
         data: { email: email }, // Pass the email as a parameter
         success: function (otpGenerated) {
@@ -100,3 +100,89 @@ function generateOtp(event) {
         }
     });
 }
+
+function validateOTP() {
+    var userEnteredOtp = document.getElementById("otp").value; // Get the OTP entered by the user
+
+    // Make an AJAX request to retrieve the OTP from the session
+    $.ajax({
+        type: "GET",
+        url: "/getOtp",
+        success: function (otpFromSession) {
+            // Compare the OTP from the session with the user-entered OTP
+            if (otpFromSession == userEnteredOtp) {
+                // OTPs match, allow form submission
+                document.getElementById("checkotp").submit();
+            } else {
+                // OTPs do not match, display error message
+                alert("Please enter correct otp")
+                return false; // Prevent form submission
+            }
+        },
+        error: function () {
+            // Error handling
+            alert("try again!!")
+            return false; // Prevent form submission
+        }
+    });
+
+    // Prevent default form submission
+    return false;
+}
+
+
+const search = () => {
+    let query = $("#search-input").val();
+
+    if (query == '') {
+        $(".search-result").hide();
+    }
+    else {
+        // sending request to server
+        let url = `http://localhost:8080/search/${encodeURIComponent(query)}`;
+        fetch(url).then((response) => {
+            return response.json();
+        }).then((data) => {
+            console.log(data);
+            let text = `<div class='list-group'>`;
+
+            data.forEach(contact => {
+                text += `<a href='/user/${contact.cId}/contact' class='list-group-item list-group-action'> ${contact.name} </a>`;
+            });
+
+            text += `</div>`;
+            $(".search-result").html(text);
+            $(".search-result").show();
+        });
+    }
+};
+
+
+// request create for the user patment (order)
+
+const paymentStart = () => {
+    console.log("payment started...");
+    var amount = $("#payment_field").val();
+    console.log(amount);
+    if (amount == "" || amount == null) {
+        alert("amount is required !!");
+        return;
+    }
+    
+    $.ajax({
+        type: "POST",
+        url: "/user/create_order",
+        data: JSON.stringify({ amount: amount, info: 'order_request' }),
+        contentType: 'application/json',
+        dataType: 'json',
+        success: function (response) {
+            console.leg(response)
+        },
+        error: function (error) {
+            console.log(error)
+            alert("something went wrong !!")
+        }
+    })
+};
+
+

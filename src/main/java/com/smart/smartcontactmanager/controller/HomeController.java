@@ -1,17 +1,11 @@
 package com.smart.smartcontactmanager.controller;
 
-import com.smart.smartcontactmanager.helper.GEmailSender;
-
-import java.util.Random;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.smart.smartcontactmanager.entities.User;
 
@@ -58,6 +52,11 @@ public class HomeController {
         m.addAttribute("user", new User());
         session.setAttribute("msgp", false);
         return "signup";
+    }
+
+    @GetMapping("/forgetPassword")
+    public String forgetPassword(){
+        return "emailBox";
     }
 
 

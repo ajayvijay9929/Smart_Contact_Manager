@@ -15,10 +15,18 @@
                 <img class="my_profile_pic m-3" th:src="@{../image/contact.jpeg}" alt="">
                 <h2>Start adding your contact</h2>
                 <a th:href= "@{/user/add-contact}" style="display: block;" class="btn btn-primary mt-4"> Add New Contact</a>
+              <hr>
+                <h3 class="mt-3">Donate us</h3>
+                <input type="number" name="payment_field" id="payment_field" placeholder="Enter amount">
+                <button onclick="paymentStart()" class="btn btn-success shadow" style="margin-top: -.5%;">Pay</button>
             </div>
         </div>
     </section>
 
+    <script>
+        $('.item').removeClass('active')
+        $('#home-link').addClass('active')
+    </script>
     
 </body>
 </html>

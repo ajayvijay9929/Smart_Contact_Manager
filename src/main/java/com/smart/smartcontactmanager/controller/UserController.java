@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.smart.smartcontactmanager.dao.ContactRepository;
@@ -31,6 +33,8 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/user")
 public class UserController {
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private UserRepository ur;
     @Autowired
@@ -170,12 +174,24 @@ public class UserController {
     }
 
     @PostMapping("/change-password")
-    public String changePassword(@RequestParam("password") String password, HttpSession session) {
-        session.setAttribute("message", new Message("Password Changed Successfully", "success"));
-        System.out.println(password);
-        user.setPassword(passwordEncoder.encode(password));
-        ur.save(user);
+    public String changePassword(@RequestParam("password") String password,@RequestParam("oldPassword") String oldPassword, HttpSession session) {
+        if (this.bCryptPasswordEncoder.matches(oldPassword, user.getPassword())) {
+            session.setAttribute("message", new Message("Password Changed Successfully", "success"));
+            user.setPassword(passwordEncoder.encode(password));
+            ur.save(user);            
+        } else {
+            session.setAttribute("message", new Message("Sorry old password wrong!!", "danger"));
+        }
         return "normal/setting";
+    }
+
+    // this is for payment cerate and call the api
+
+    @PostMapping("/create_order")
+    @ResponseBody
+    public String createOrder(){
+        System.out.println("i am in the create order fuction");    
+        return "done";
     }
 
 }

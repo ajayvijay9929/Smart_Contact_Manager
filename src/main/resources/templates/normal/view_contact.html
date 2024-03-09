@@ -11,42 +11,56 @@
     <div th:replace="~{normal/base :: content}"></div>
     <section class="content mt-5">
         <i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
-        <div  th:if="${session.message}" style="background-color: rgb(192, 136, 25); "  class="smg text-center" id="errorSection">
-              <span th:text="${session.message.content}"></span>
-              <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
-          </div>
-        <div class="card cmargin" th:if= "${totalPages != 0}">
+        <div th:if="${session.message}" style="background-color: rgb(192, 136, 25); " class="smg text-center"
+            id="errorSection">
+            <span th:text="${session.message.content}"></span>
+            <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+        </div>
+        <div class="card cmargin" th:if="${totalPages != 0}">
             <div class="card_body rc">
-                
-                <h1 class="text-center rc">Your Contact</h1>
 
-                <table class="table table-dark table-responsive table-sm text-center">
-                    <thead>
-                        <tr>
-                            <th class="table-primary" scope="col">Name</th>
-                            <th class="table-warning" scope="col">Email</th>
-                            <th class="table-success" scope="col">Phone</th>
-                            <th class="table-danger" scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="c:${contacts}">
-                            <td th:text="${c.name}"></td>
-                            <td>
-                                <!-- <img src="" th:src="@{'/image/'+${contacts.image}}" alt=""> -->
-                                <span th:text="${c.email}">N/A</span>
-                            </td>
-                            <td th:text="${c.phone}">N/A</td>
-                            <td>
-                                <a class="btn btn-outline-info btn-sm"
-                                    th:href="@{'/user/'+${c.cId}+'/contact'}">View</a>
-                                <a class="btn btn-outline-primary btn-sm"
-                                    th:href="@{'/user/'+${c.cId}+'/update'}">Update</a>
-                                <a class="btn btn-outline-danger btn-sm" th:onclick="|deleteContact(${c.cId},${currentPage})|" >Delete</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h1 class="text-center rc">Your Contacts</h1>
+
+                <div class="search-container my-3 mx-3 searchclass">
+                    <input onkeyup="search()" id="search-input" type="text" class="form-control"
+                        placeholder="search your contacts">
+
+                    <div class="search-result">
+                        <!-- result here -->
+
+                    </div>
+                </div>
+
+                <div class="table-responsive ">
+                    <table class="table table-dark table-sm  text-center table-hover">
+                        <thead>
+                            <tr>
+                                <th class="table-primary" scope="col">Name</th>
+                                <th class="table-warning" scope="col">Email</th>
+                                <th class="table-success" scope="col">Phone</th>
+                                <th class="table-danger" scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="c:${contacts}">
+                                <td th:text="${c.name}"></td>
+                                <td>
+                                    <!-- <img src="" th:src="@{'/image/'+${contacts.image}}" alt=""> -->
+                                    <span th:text="${c.email}">N/A</span>
+                                </td>
+                                <td th:text="${c.phone}">N/A</td>
+                                <td>
+                                    <a class="btn btn-outline-info btn-sm"
+                                        th:href="@{'/user/'+${c.cId}+'/contact'}">View</a>
+                                    <a class="btn btn-outline-primary btn-sm"
+                                        th:href="@{'/user/'+${c.cId}+'/update'}">Update</a>
+                                    <a class="btn btn-outline-danger btn-sm"
+                                        th:onclick="|deleteContact(${c.cId},${currentPage})|">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <nav aria-label="...">
                     <ul class="pagination pagination-s justify-content-center">
@@ -67,9 +81,13 @@
 
             </div>
         </div>
-        <h1 class="text-center mt-2 bg-danger text-white p-4 cmargin" th:unless="${totalPages}">You don't have contact</h1>
+        <h1 class="text-center mt-2 bg-danger text-white p-4 cmargin" th:unless="${totalPages}">You don't have contact
+        </h1>
     </section>
-
+    <script>
+        $('.item').removeClass('active')
+        $('#view-link').addClass('active')
+    </script>
 
 </body>
 

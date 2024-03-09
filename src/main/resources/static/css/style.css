@@ -7,7 +7,7 @@ body {
 }
 
 .bg-cprimary {
-    background: #009688;
+    background: #0d83d1;
 }
 
 .banner {
@@ -53,6 +53,7 @@ body {
     .content {
         margin-left: 0% !important;
     }
+
 
 }
 
@@ -113,7 +114,7 @@ body {
 
 
 .rc {
-    background-color: #117844a8;
+    background-color: #0cb4e2bc;
 }
 
 .cpc {
@@ -268,4 +269,34 @@ button[disabled] {
   #generateOtpButton {
     margin-top: 5px; /* Adjust vertical offset as needed */
   }
-  
+
+.search-container{
+
+    /* this is for full length search box */
+    /* position: relative;
+    width: 25%; */
+
+    
+    position: absolute;
+    top: 1.5%;
+    right: -1%;
+    transform: translateY(-45%);
+    width: 20%;
+    background-color: rgb(43, 232, 22);
+
+}
+
+.search-result{
+    position: absolute;
+    background: white;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    display: none;
+}
+
+.active{
+    background: #ff5b09ba;
+}
+

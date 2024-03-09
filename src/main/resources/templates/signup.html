@@ -45,11 +45,12 @@
                                 </div>
                             </div>
 
+                            
                             <div class="mb-3">
                                 <label for="email_field" class="form-label">Your Email</label>
                                 <input name="email" type="email" class="form-control" id="email_field"
-                                    aria-describedby="emailHelp" placeholder="Enter Here" required
-                                    th:value="${user.email}">
+                                aria-describedby="emailHelp" placeholder="Enter Here" required
+                                th:value="${user.email}">
                             </div>
 
                             <div class="mb-3 d-flex justify-content-between">
@@ -99,6 +100,10 @@
                 }
             }
         };
+
+        $('.nav-link').removeClass('active')
+        $('#signup-link').addClass('active')
+
     </script>
 </body>
 
