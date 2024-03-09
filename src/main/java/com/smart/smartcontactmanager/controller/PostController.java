@@ -73,7 +73,7 @@ public class PostController {
         else{
             GEmailSender gEmailSender=new GEmailSender();
             String to="2021pcecrvijay020@poornima.org"; // this is for testing purpose
-            // String to=email;
+            // String to=email;  
             String from="vijayyadavworks@gmail.com";
             String subject="Contact Manager OTP";
             Random random = new Random();

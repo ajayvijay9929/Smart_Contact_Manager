@@ -21,7 +21,7 @@ public class GEmailSender {
         properties.put("mail.smtp.port","587");
         properties.put("mail.smtp.host","smtp.gmail.com");
         String username= "vijayyadavworks";
-        String password="";
+        String password="kzsrsinrvrayjgaw";
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
