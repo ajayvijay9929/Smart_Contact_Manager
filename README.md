@@ -5,7 +5,8 @@ About Page
 ![image](https://github.com/ajayvijay9929/Smart_Contact_Manager/assets/120326151/da6e0157-d692-4c49-938a-a4b4476d2d93)
 
 Signup Page
-![image](https://github.com/ajayvijay9929/Smart_Contact_Manager/assets/120326151/e698dd47-1237-4a9a-a161-fbfca20d2651)
+![image](https://github.com/ajayvijay9929/Smart_Contact_Manager/assets/120326151/84d182e5-c966-41b8-b3f5-a677f99f4264)
+
 
 Login Page
 ![image](https://github.com/ajayvijay9929/Smart_Contact_Manager/assets/120326151/9f13efa0-6376-4217-9919-02815ba9764f)
@@ -15,6 +16,9 @@ Private Homa Page
 
 View Contact Page (don't have contact)
 ![image](https://github.com/ajayvijay9929/Smart_Contact_Manager/assets/120326151/97e5113c-970a-43d4-9182-c43788bc8028)
+
+add contact
+![image](https://github.com/ajayvijay9929/Smart_Contact_Manager/assets/120326151/20b9987d-63da-41d7-8e9a-8e3a0fdf5bd4)
 
 View Contact Page (have contact)
 ![image](https://github.com/ajayvijay9929/Smart_Contact_Manager/assets/120326151/56f09684-ee4f-43be-82fd-7a0393ac0ad6)
