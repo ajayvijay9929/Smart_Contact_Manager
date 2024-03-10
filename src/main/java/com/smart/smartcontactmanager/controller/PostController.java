@@ -43,10 +43,10 @@ public class PostController {
     @ResponseBody
     public boolean loginOTP(@RequestParam("email") String email) {
         System.out.println("i am in otp");
-        System.out.println(email);
+        System.out.println("user email " + email);
         GEmailSender gEmailSender=new GEmailSender();
-        String to="2021pcecrvijay020@poornima.org"; // this is for testing purpose
-        // String to=email;
+       // String to="2021pcecrvijay020@poornima.org"; // this is for testing purpose
+        String to=email;
         String from="vijayyadavworks@gmail.com";
         String subject="Contact Manager OTP";
         Random random = new Random();
@@ -64,7 +64,8 @@ public class PostController {
     @PostMapping("/otp")
     public String loginOTP1(@RequestParam("email") String email,HttpSession session) {
         System.out.println("i am in otp");
-        System.out.println(email);
+        System.out.println("this is user email -> " + email);
+        System.out.println("email this is ");
         if (ur.getUserByUserName(email) == null) {
             session.setAttribute("message", new Message("User not registered please register !!", " text-center alert alert-danger"));
             System.out.println("user not register");
@@ -97,24 +98,24 @@ public class PostController {
 
 
     // this is use for send the fileattachment using email
-    @GetMapping("/sendfile")
-    public boolean emailAttachFile(){
-        System.out.println("i am here");
-        GEmailSender gEmailSender=new GEmailSender();
-        String to="2021pcecrvijay020@poornima.org"; // this is for testing purpose
-        //String to=email;
-        String from="vijayyadavworks@gmail.com";
-        String subject="Contact Manager OTP";
-        Random random = new Random();
-        otp =  10000 + random.nextInt(90000);
-        String text= "Your Signup Otp   " + otp + "    don't share OTP with anyone";
-        File file=new File("E:\\OneDrive\\Vijay\\download.jpg");
-        boolean b = gEmailSender.sendEmailAttachment(to, from, subject, text,file);
-        if (b) System.out.println("mail send ");
-        else System.out.println("something miss");
-        return b;
+    // @GetMapping("/sendfile")
+    // public boolean emailAttachFile(){
+    //     System.out.println("i am here");
+    //     GEmailSender gEmailSender=new GEmailSender();
+    //     String to="2021pcecrvijay020@poornima.org"; // this is for testing purpose
+    //     //String to=email;
+    //     String from="vijayyadavworks@gmail.com";
+    //     String subject="Contact Manager OTP";
+    //     Random random = new Random();
+    //     otp =  10000 + random.nextInt(90000);
+    //     String text= "Your Signup Otp   " + otp + "    don't share OTP with anyone";
+    //     File file=new File("E:\\OneDrive\\Vijay\\download.jpg");
+    //     boolean b = gEmailSender.sendEmailAttachment(to, from, subject, text,file);
+    //     if (b) System.out.println("mail send ");
+    //     else System.out.println("something miss");
+    //     return b;
         
-    }
+    // }
 
     @PostMapping("do_signup")
     public String signup(@Valid @ModelAttribute("user") User user, BindingResult br ,Model m,@RequestParam("otp") int uotp,HttpSession session){
